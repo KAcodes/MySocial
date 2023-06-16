@@ -38,9 +38,9 @@ const Navbar = () => {
         <div className="md:flex  hidden ">
             {isUserLoggedIn ? (
                 <div className="flex gap-5 ">
-                    <Link href="/messages">Messages</Link>
-                    <Link href="/shop">Shop</Link>
-                    <Link href="/settings">Settings</Link>
+                    <Link href="/homepage/messages">Messages</Link>
+                    <Link href="/homepage/shop">Shop</Link>
+                    <Link href="/homepage/settings">Settings</Link>
                         <button 
                         type="button" 
                         >Sign Out
@@ -71,13 +71,13 @@ const Navbar = () => {
                     className="outline-btn">MS</p>
                     {toggleDropdown && (
                         <div className="dropdown">
-                            <Link href="/messages"
+                            <Link href="/homepage/messages"
                             className="dropdown_link"
                             onClick={() => setToggleDropdown(false)}>Messages</Link>
-                            <Link href="/shop"
+                            <Link href="/homepage/shop"
                             className="dropdown_link"
                             onClick={() => setToggleDropdown(false)}>Shop</Link>
-                            <Link href="/settings"
+                            <Link href="/homepage/settings"
                             className="dropdown_link"
                             onClick={() => setToggleDropdown(false)}>Settings</Link>
                             <button className="black_btn"
