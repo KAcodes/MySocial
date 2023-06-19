@@ -1,32 +1,37 @@
 import app from "../config";
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, getAuth } from "firebase/auth";
-import router from "next/router";
-
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, getAuth, signOut } from "firebase/auth";
 
 const auth = getAuth(app);
 
 export async function signUp(email, password) {
-    let result = null,
-        error = null;
+    let result, error = null;
+    
     try {
         result = await createUserWithEmailAndPassword(auth, email, password);
+    } catch (e) {
+        error = e;
+    }
+
+    return { result, error }; 
+}
+
+export async function signIn(email, password) {
+    
+
+    let result, error = null
+        
+    try {
+        result = await signInWithEmailAndPassword(auth, email, password);
         console.log(result.user)
     } catch (e) {
         error = e;
     }
-
-    return { result, error };
+    return { result, error }; 
 }
 
-export async function signIn(email, password) {
-    let result = null,
-        error = null;
-    try {
-        result = await signInWithEmailAndPassword(auth, email, password);
-    } catch (e) {
-        error = e;
-    }
+ export async function logout() {
 
-    return { result, error };
+    console.log("user is signed out")
+    return await signOut(auth);
+} 
 
-}

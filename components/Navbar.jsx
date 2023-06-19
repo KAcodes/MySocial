@@ -2,31 +2,31 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useState, useEffect } from "react";
-import { signIn, signOut, useSession, getProviders } from "next-auth/react";
+import { useState } from "react";
+import { logout } from "@app/firebase/auth/login";
+import { useAuthContext } from "@app/context/AuthContext";
+
 
 
 const Navbar = () => {
 
-    const isUserLoggedIn = true;
-
-    const [providers, setProviders] = useState(null);
-
     const [toggleDropdown, setToggleDropdown] = useState(false)
 
-    useEffect(() => {
-        const setAllProviders = async() => {
-            const response = await getProviders();
-            setProviders(response)
+    const handleLogout = async() => {
+        try {
+            await logout()
+            setToggleDropdown(false);
+        } catch (e) {
+            console.log(e);
         }
-        setAllProviders();
-    }, [])
+    }
+
   return (
 
     
     <nav className="flex-between w-full mb-1 pt-3">
         
-        <Link href="/" className="flex flex-center gap-3 float-left">
+        <Link href="/homepage" className="flex flex-center gap-3 float-left">
             <Image
             src="/assets/images/bali3.jpg"
             width={37}
@@ -36,36 +36,20 @@ const Navbar = () => {
             <p className="logo_text">MySocial</p>
         </Link>
         <div className="md:flex  hidden ">
-            {isUserLoggedIn ? (
-                <div className="flex gap-5 ">
+            <div className="flex gap-5 ">
                     <Link href="/homepage/messages">Messages</Link>
                     <Link href="/homepage/shop">Shop</Link>
                     <Link href="/homepage/settings">Settings</Link>
-                        <button 
-                        type="button" 
-                        >Sign Out
-                        </button>
-                    
-                </div>
-            ) : (
-                <div>
-                    {providers && Object.values(providers).map(provider => (
-                        <button
-                        type="button"
-                        key={provider.name}
-                        onClick={() => {signIn}}
-                        className="outline_btn"
-                        >
-                            Sign In
-                        </button>
-                    ))}
-                </div>
-            )}
+                    <button 
+                    type="button"
+                    onClick={handleLogout} 
+                    >Sign Out
+                    </button> 
+            </div>
         </div>
 
         {/* mobiie nav */}
         <div className="">
-            {isUserLoggedIn ?  
                 <div className="">
                     <p onClick={() => {setToggleDropdown((prev) => !prev)}}
                     className="outline-btn">MS</p>
@@ -81,29 +65,10 @@ const Navbar = () => {
                             className="dropdown_link"
                             onClick={() => setToggleDropdown(false)}>Settings</Link>
                             <button className="black_btn"
-                            onClick={() => {
-                                setToggleDropdown(false);
-                                signOut();
-                                }}>Sign Out</button>
+                            onClick={handleLogout}>Sign Out</button>
                         </div>
                     )}
-                </div> 
-            
-            :
-            <>
-                {providers && Object.values(providers).map(provider => (
-                    <button
-                    type="button"
-                    key={provider.name}
-                    onClick={() => {signIn}}
-                    className="outline_btn"
-                    >
-                        Sign In
-                    </button>
-                ))}
-            </>
-            } 
-           
+                </div>
         </div>
         
     </nav>
