@@ -13,6 +13,10 @@ module.exports = {
       },
       colors: {
         'primary-orange': '#FF5722',
+      },
+      minWidth: {
+        '1/2': '50%',
+        '3/4': '75%'
       }
     },
   },

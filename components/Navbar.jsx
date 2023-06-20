@@ -51,8 +51,8 @@ const Navbar = () => {
         {/* mobiie nav */}
         <div className="">
                 <div className="">
-                    <p onClick={() => {setToggleDropdown((prev) => !prev)}}
-                    className="outline-btn">MS</p>
+                    <button onClick={() => {setToggleDropdown((prev) => !prev)}}
+                    className="outline-btn">MS</button>
                     {toggleDropdown && (
                         <div className="dropdown">
                             <Link href="/homepage/messages"

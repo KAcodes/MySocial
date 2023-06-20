@@ -14,12 +14,11 @@ const RootLayout = ({ children }) => {
     <html lang="en">
         <body>
           <AuthContextProvider>
-          <div className="main">
-            <div className="gradient"></div>
-          </div>
-            <main className="app">
+            <main >
                 {children}
             </main>
+          
+            
           </AuthContextProvider>
         </body>
     </html>

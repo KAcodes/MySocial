@@ -4,8 +4,8 @@ import { useEffect, useState } from "react";
 import { signIn } from "./firebase/auth/login";
 import { hideError, showError, hideSuccess, clearEmailAndPassword } from "./ui";
 import { useRouter } from "next/navigation";
-import Link from "next/link";
-import { useAuthContext } from "./context/AuthContext"; 
+import Link from "next/link"; 
+import Image from "next/image";
 
 
 const Page = () => {
@@ -54,26 +54,37 @@ const Page = () => {
 
   return (
     <div id="login" className="flex ">
-        <div className="login-pic w-1/2">Whatsup</div>
-        <div id="login-form w-1/2 flex-column">
-            <form className="">
-                <h1>Sign in to your account</h1>
-                <p>Don't have an account? <Link href="/signup">Sign up here!</Link></p>
-                <div>
-                    <input id="txtEmail" type="email" placeholder="Enter Email Address" onChange={(e) => {setEmail(e.target.value)}}/>
-                    <label>Email</label>
+        <div id="login-pic" className="w-full relative hidden sm:block"><Image src="/assets/images/login-pic.jpg" alt="login pic of friends" fill style={{objectFit: "cover"}} />
+        </div>
+        <div id="login-form-side" className=" flex w-full bg-gray-100 h-screen place-items-center p-4">
+            <form className=" h-4/6 m-3 min-w-3/4 mx-auto bg-white rounded-xl space-y-4 p-11 shadow-md">
+                <div className="flex-col space-y-4 min-w-1/2 mx-auto">
+                <h1 className="text-4xl font-medium text-center">Sign in </h1>
+                <div className="max-w-max min-w-max mx-auto p-2 space-y-3">
+                    <div>
+                        <label className="block text-gray-700 text-sm font-bold mb-2">Email:</label>
+                        <input id="txtEmail" type="email" placeholder="Enter Email Address" onChange={(e) => {setEmail(e.target.value)}}
+                        className="border rounded shadow py-1 px-3 bg-white text-sm" />
+                    </div>
+                    <div>
+                        <label className="block text-gray-700 text-sm font-bold mb-2">Password:</label>
+                        <input id="txtPassword" type="password" placeholder="Enter Password" onChange={(e) => {setPassword(e.target.value)}} 
+                        className="border rounded shadow py-1 px-3 bg-white text-sm" />
+                        
+                    </div>
+                    <div id="loginError">
+                        <div id="loginErrorMessage">Error message</div> 
+                    </div>
+                    <div id="loginSuccess">
+                        <div id="loginSuccessMessage"></div> 
+                    </div>
                 </div>
-                <div>
-                    <input id="txtPassword" type="password" placeholder="Enter Password" onChange={(e) => {setPassword(e.target.value)}}/>
-                    <label>Password</label>
+                <p className="text-xs text-center ">New to MySocial? <Link className="font-medium" href="/signup">Sign up here!</Link></p>
+                <div className="flex items-center justify-center max-[1000px]:flex-col text-sm space-x-6">
+                    <button id="loginBtn" type="button" onClick={handleSignIn} className="blue_btn">Log in</button>
+                    <Link href="/">Forgot Password?</Link>
                 </div>
-                <div id="loginError">
-                    <div id="loginErrorMessage">Error message</div> 
                 </div>
-                <div id="loginSuccess">
-                    <div id="loginSuccessMessage"></div> 
-                </div>
-                <button id="loginBtn" type="button" onClick={handleSignIn}>Log in</button>
             </form>
         </div>
     </div>

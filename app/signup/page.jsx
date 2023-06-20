@@ -58,8 +58,8 @@ const Page = () => {
 
     return (
         <div id="login" className="flex ">
-            <div className="login-pic w-1/2">Whatsup</div>
-            <div id="login-form w-1/2 flex-column">
+            <div id="login-pic" className="w-1/2">Login Pic</div>
+            <div id="login-form" className="w-1/2 flex-column">
                 <form className="">
                     <h1>Create an account</h1>
                     <p>Already have an account? <Link href="/">Sign In</Link></p>

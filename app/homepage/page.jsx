@@ -8,11 +8,12 @@ const Home = ({}) => {
 
   const { currentUser } = useAuthContext();
   const router = useRouter();
+  
 
   useEffect(() => {
     
     if (!currentUser) {
-      return router.replace("/");
+      return router.push("/");
   }
   }, [currentUser])
   
