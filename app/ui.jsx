@@ -1,18 +1,16 @@
-export const hideError = () => {
-    loginError.style.display = "none"
+export const hideOutcome = () => {
+    loginOutcome.style.display = "none"
 }
 
 export const showError = (error) => {
-    loginError.style.display = "block";
-    loginErrorMessage.innerHTML = `Error: ${error.message}`
-}
-
-export const hideSuccess = () => {
-    loginError.style.display = "none"
+    loginOutcome.style.display = "block";
+    loginErrorMessage.innerHTML = `Error: ${error}`
+    console.log(error)
+    clearEmailAndPassword();
 }
 
 export const showSuccess = () => {
-    loginSuccess.style.display = "block";
+    loginOutcome.style.display = "block";
     loginSuccessMessage.innerHTML = "You have successfully signed up, please use these details to sign in to the app"
     clearEmailAndPassword();
 }

@@ -10,14 +10,10 @@ export const metadata = {
 const RootLayout = ({ children }) => {
 
   return (
-    
-          <>
-            <div className="">
+            <div>
                 <Navbar/>
                 {children}
             </div>
-          </>
-      
   )
 }
 
