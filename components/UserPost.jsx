@@ -67,4 +67,12 @@ const UserPost = ({ img, caption, title, name }) => {
   );
 };
 
+
+/* {Object.keys(postList).map((post, id) => {
+  return (
+      <UserPost key={id} img={file} caption={postList[post].caption} title={postList[post].title} name={currentUser.uid}/>
+  )
+}
+)} */
+
 export default UserPost;

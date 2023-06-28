@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useAuthContext } from "@app/context/AuthContext"
-import Post from "@components/Post";
+import Posts from "@components/Posts";
 import Tester from "@components/Tester";
 
 const Home = ({}) => {
@@ -24,9 +24,8 @@ const Home = ({}) => {
         <h1>My Social Home Page</h1>
         <h1 >User email = {currentUser && currentUser.email}</h1>
         <h3>User Id = {currentUser && currentUser.uid}</h3>
-        {currentUser && <></>}
-        
         <Tester/>
+        <Posts/>
     </section>
   )
 }
