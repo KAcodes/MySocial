@@ -12,7 +12,7 @@ const UserPost = ({ img, caption, title, name }) => {
           </div>
           <img
             className="w-full cursor-pointer"
-            src={img ? URL.createObjectURL(img) : "https://www.elegantthemes.com/blog/wordpress/the-ultimate-guide-to-common-http-error-codes"}
+            src={img}
             alt=""
           />
           <div className="flex p-4 justify-between">

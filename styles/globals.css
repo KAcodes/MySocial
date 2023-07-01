@@ -66,6 +66,10 @@
   background-color: red;
 }
 
+.online_dot {
+  margin-left: -10px;
+}
+
 
 
 /* Tailwind Styles */
