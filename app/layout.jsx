@@ -1,6 +1,12 @@
 import "@styles/globals.css"
+import "@fortawesome/fontawesome-svg-core/styles.css"; 
+
+import { config } from "@fortawesome/fontawesome-svg-core";
+config.autoAddCss = false; 
+
 import { AuthContextProvider } from "./context/AuthContext";
 import ProtectedRoute from "@components/ProtectedRoute";
+
 
 
 export const metadata = {
@@ -17,8 +23,6 @@ const RootLayout = ({ children }) => {
             <main >
                 {children}
             </main>
-          
-            
           </AuthContextProvider>
         </body>
     </html>

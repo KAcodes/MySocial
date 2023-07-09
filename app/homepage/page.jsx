@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useAuthContext } from "@app/context/AuthContext";
-import Tester from "@components/Tester";
+import PostSection from "@components/PostSection";
 import FriendSidebar from "@components/FriendSidebar";
 
 const Home = ({}) => {
@@ -12,20 +12,18 @@ const Home = ({}) => {
   const router = useRouter();
   
 
-  /* useEffect(() => {
+ /*  useEffect(() => {
     
     if (!currentUser) {
       return router.push("/");
   }
-  }, [currentUser]) */
+  }, [currentUser])  */
   
   return (
     <section className="w-full flex-center flex-col bg-slate-100">
-        <h1>My Social Home Page</h1>
-        <h3>User Id = {currentUser && currentUser.uid}</h3>
         <div className="w-full flex">
-          <FriendSidebar />
-          <Tester />
+          <FriendSidebar/>
+          <PostSection/>
         </div>
     </section>
   )
