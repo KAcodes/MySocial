@@ -2,12 +2,8 @@ import "@styles/globals.css"
 import "@fortawesome/fontawesome-svg-core/styles.css"; 
 
 import { config } from "@fortawesome/fontawesome-svg-core";
-config.autoAddCss = false; 
-
+config.autoAddCss = false;
 import { AuthContextProvider } from "./context/AuthContext";
-import ProtectedRoute from "@components/ProtectedRoute";
-
-
 
 export const metadata = {
     title: "Social Media Page",
@@ -16,11 +12,12 @@ export const metadata = {
 
 const RootLayout = ({ children }) => {
 
+  
   return (
-    <html lang="en">
+    <html lang="en" >
         <body>
           <AuthContextProvider>
-            <main >
+            <main>
                 {children}
             </main>
           </AuthContextProvider>

@@ -20,8 +20,12 @@ import {
 const Tester = () => {
   const { currentUser } = useAuthContext();
   const { posts, setPosts, loading, error } = fetchPosts();
+
   const [newTitle, setNewTitle] = useState("Title");
   const [newCaption, setNewCaption] = useState("Caption");
+ 
+
+
   const [imageURL, setImageURL] = useState("");
   const [file, setFile] = useState("");
   const [perc, setPerc] = useState(null);
@@ -56,7 +60,6 @@ const Tester = () => {
         () => {
           getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
             setImageURL(downloadURL);
-            console.log(downloadURL);
           });
         }
       );
@@ -119,23 +122,25 @@ const Tester = () => {
 
   return (
     <div className="sm:w-full w-4/5 m-1 p-2 ">
-      <h1 className= 'font-bold text-zinc-800 my-5 text-3xl text-center'>MySocial Homepage</h1>
+      <h1 className= 'font-bold text-zinc-800 my-6 text-3xl text-center'>MySocial Homepage</h1>
       <div className="mb-7 bg-white rounded-lg p-4 md:w-4/5 sm:w-full mx-auto min-w-fit min-h-max">
         <div className="mx-auto max-w-fit p-2 my-3">
-          <h1 className="text-xl font-semibold">Create New Post</h1>
+          <h1 className="font-semibold text-zinc-800 my-5 text-2xl">Create New Post</h1>
         </div>
         <div className="md:flex justify-evenly mx-auto space-y-5 max-h-max">
           <div className="flex flex-col mx-3 p-6 items-center my-auto space-y-3">
             <div className="space-y-3 flex flex-col max-w-[300px] mx-auto">
-              <label htmlFor="file" className="text-center ">
-                Choose Image: <FontAwesomeIcon className="text-blue-300 hover:scale-150 transformation duration-300 text-2xl ml-2 cursor-pointer" icon={faImage}/>
-              </label>
+              <div className="flex items-center  justify-center">
+                <label htmlFor="file" className="text-center font-medium text-zinc-800 text-lg mr-2 ">
+                  Choose Image: 
+                </label>
+                <FontAwesomeIcon className="text-blue-400 hover:scale-150 transformation duration-300 text-2xl ml-2 cursor-pointer" icon={faImage}/>
+              </div>
               <input
                 type="file"
                 id="file"
                 placeholder="Add Image"
                 className="hidden"
-
                 onChange={(e) => {
                   setFile(e.target.files[0]);
                 }}
@@ -162,7 +167,7 @@ const Tester = () => {
             </button>
           </div>
           <div className=" my-auto p-5 max-h-max">
-            <p className="mx-auto max-w-fit p-2 my-3 ">Post Preview</p>
+            <p className="mx-auto max-w-fit p-2 my-3 font-medium text-zinc-800 text-xl">Post Preview</p>
             {currentUser && (
               <CreatePostInfo
                 img={file}
@@ -191,7 +196,8 @@ const Tester = () => {
                     caption={posts[post].caption}
                     title={posts[post].title}
                     name={currentUser.uid}
-                    del={() => handleDeletePost(post)}
+                    handleDelete={() => handleDeletePost(post)}
+                    postNum={post}
                   />
                 );
               })}

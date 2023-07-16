@@ -11,7 +11,6 @@ const FriendSidebar = () => {
           const createFriends = async () => {
             const response = await fetch("https://randomuser.me/api/?results=30");
             const data = await response.json();
-            console.log(data)
             setProfileArray(data.results);
           }
           createFriends()

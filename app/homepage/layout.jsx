@@ -1,5 +1,8 @@
+"use client"
+
 import "@styles/globals.css"
 import Navbar from "@components/Navbar"
+import ProtectedRoute from "@components/ProtectedRoute"
 
 
 export const metadata = {
@@ -7,14 +10,14 @@ export const metadata = {
     description: "Make your own social media page"
 }
 
-const RootLayout = ({ children }) => {
+const Layout = ({ children }) => {
 
   return (
-            <div>
+            <ProtectedRoute>
                 <Navbar/>
                 {children}
-            </div>
+            </ProtectedRoute>
   )
 }
 
-export default RootLayout
+export default Layout

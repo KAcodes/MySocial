@@ -6,10 +6,10 @@ const CreatePostInfo = ({ img, caption, title, name }) => {
       <div className="flex justify-center items-center">
         <div className="container bg-white rounded-xl shadow-lg hover:shadow-xl space-y-4">
           <div>
-            <p className="text-lg mt-2 ml-4 font-bold text-gray-800">
+            <p className="text-lg mt-2 ml-4 font-semibold text-gray-800">
               {name}
             </p>
-            <p className="text-2xl mt-2 ml-4 font-bold text-gray-800">
+            <p className="text-2xl mt-2 ml-4 font-medium text-gray-800">
               {title}
             </p>
           </div>

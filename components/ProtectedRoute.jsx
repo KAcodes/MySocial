@@ -1,16 +1,17 @@
-
+"use client"
 import { useAuthContext } from '@app/context/AuthContext';
 import { useRouter } from "next/navigation";
+import { useEffect } from 'react';
 
-const ProtectedRoute = () => {
-    const {currentUser} = useAuthContext();
+const ProtectedRoute = ({children}) => {
+    const { currentUser } = useAuthContext();
     const router = useRouter();
 
-   
-
+  useEffect(() => {
     if (!currentUser) {
-        return  router.replace("/");
+      router.push("/");
     }
+  }, [currentUser])
 
   return children;
 }

@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { signIn } from "./firebase/auth/login";
-import { hideOutcome, showError, hideSuccess, showSuccess, clearEmailAndPassword } from "./ui";
+import { hideOutcome, showError } from "./ui";
 import { useRouter } from "next/navigation";
 import Link from "next/link"; 
 import Image from "next/image";
@@ -51,7 +51,7 @@ const Page = () => {
 
   return (
     <div id="login" className="flex ">
-        <div id="login-pic" className="w-full relative hidden sm:block"><Image src="/assets/images/login-pic.jpg" alt="login pic of friends" fill style={{objectFit: "cover"}} />
+        <div id="login-pic" className="w-full relative hidden sm:block">{ <Image src="/assets/images/login-pic.jpg" alt="login pic of friends" fill style={{objectFit: "cover"}} /> }
         </div>
         <div id="login-form-side" className=" flex w-full bg-gray-100 h-screen place-items-center p-4">
             <form className="min-h-max m-3 min-w-3/4 mx-auto bg-white rounded-xl space-y-4 p-11 shadow-md">
@@ -77,7 +77,7 @@ const Page = () => {
                     <p className="text-xs text-center ">New to MySocial? <Link className="font-medium" href="/signup">Sign up here!</Link></p>
                     <div className="flex items-center justify-center max-[1000px]:flex-col text-sm space-x-6">
                         <button id="loginBtn" type="button" onClick={handleSignIn} className="blue_btn">Log in</button>
-                        <Link href="/">Forgot Password?</Link>
+                        <Link href="/" className="hover:font-bold">Forgot Password?</Link>
                     </div>
                 </div>
             </form>

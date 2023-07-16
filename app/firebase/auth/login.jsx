@@ -22,7 +22,6 @@ export async function signIn(email, password) {
         
     try {
         result = await signInWithEmailAndPassword(auth, email, password);
-        console.log(result.user)
     } catch (e) {
         error = e;
     }
