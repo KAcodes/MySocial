@@ -11,13 +11,6 @@ const Home = ({}) => {
   const { currentUser } = useAuthContext();
   const router = useRouter();
   
-
- /*  useEffect(() => {
-    
-    if (!currentUser) {
-      return router.push("/");
-  }
-  }, [currentUser])  */
   
   return (
     <section className="w-full flex-center flex-col bg-slate-100">

@@ -1,19 +1,23 @@
-"use client"
-import { useAuthContext } from '@app/context/AuthContext';
+"use client";
+import { useAuthContext } from "@app/context/AuthContext";
 import { useRouter } from "next/navigation";
-import { useEffect } from 'react';
+import { useEffect, useState } from "react";
 
-const ProtectedRoute = ({children}) => {
-    const { currentUser } = useAuthContext();
-    const router = useRouter();
+const ProtectedRoute = ({ children }) => {
+  const { currentUser } = useAuthContext();
+  const router = useRouter();
+  const [authorized, setAuthorized] = useState(false);
 
   useEffect(() => {
     if (!currentUser) {
-      router.push("/");
+      setAuthorized(false);
+      router.push("/login");
+    } else {
+      setAuthorized(true);
     }
-  }, [currentUser])
+  }, [currentUser, router]);
 
-  return children;
-}
+  return authorized && children;
+};
 
-export default ProtectedRoute
+export default ProtectedRoute;

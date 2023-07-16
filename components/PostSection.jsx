@@ -10,7 +10,7 @@ import { storage } from "@app/firebase/config";
 
 import UserPost from "./UserPost";
 import CreatePostInfo from "./CreatePostInfo";
-import fetchPosts from "@app/hooks/fetchPosts";
+import fetchPosts from "@hooks/fetchPosts";
 
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {
@@ -185,7 +185,7 @@ const Tester = () => {
             <p>MMMM I'm Loading</p>
           </div>
         )}
-        {!loading && (
+        {!loading && currentUser && (
           <>
             {posts &&
               Object.keys(posts).map((post, index) => {

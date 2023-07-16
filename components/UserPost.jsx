@@ -8,7 +8,7 @@ import {
   faMessageDots,
 } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
-import fetchPosts from "@app/hooks/fetchPosts";
+import fetchPosts from "@hooks/fetchPosts";
 
 import { doc, setDoc } from "firebase/firestore";
 import { db } from "@app/firebase/firestore/getData";

@@ -1,7 +1,8 @@
-import React from 'react';
+"use client"
+import { signIn } from '@app/firebase/auth/login';
+import { hideOutcome, showError } from '@app/ui';
+
 import { useEffect, useState } from "react";
-import { signIn } from "./firebase/auth/login";
-import { hideOutcome, showError } from "./ui";
 import { useRouter } from "next/navigation";
 import Link from "next/link"; 
 import Image from "next/image";
@@ -41,7 +42,7 @@ const Page = () => {
             showError(error)
         }
         if (result) {
-            router.replace("/homepage")
+            router.push("/dashboard/homepage")
         } 
     }
 
