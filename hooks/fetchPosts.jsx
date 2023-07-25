@@ -10,7 +10,8 @@ const fetchPosts = () => {
 
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
-    const [posts, setPosts] = useState({})
+    const [posts, setPosts] = useState({});
+    const [profPic, setProfPic] = useState("")
   const { currentUser } = useAuthContext();
 
   useEffect(() => {
@@ -28,14 +29,25 @@ const fetchPosts = () => {
       finally {
         setLoading(false)
       }
-     
-    } 
+    }
     fetchData();
+    
   }, [posts])
 
+  /* useEffect(() => {
+    const fetchProfPic = async() => {
+      
+      const docSnap = await getDoc(doc(db, "userProfilePic", currentUser.uid,));
+      if (docSnap.exists()) {
+        setProfPic(docSnap.data().profPic)  
+      }
+    }  
+    fetchProfPic();
+  }) */
 
 
-  return {posts, loading, error, setPosts}
+
+  return {posts, loading, error, profPic, setPosts}
 }
 
 export default fetchPosts

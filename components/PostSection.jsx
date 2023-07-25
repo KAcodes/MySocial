@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { doc, setDoc, deleteField, updateDoc } from "firebase/firestore";
+import { doc, setDoc, deleteField } from "firebase/firestore";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 
 import { db } from "@app/firebase/firestore/getData";
@@ -11,6 +11,7 @@ import { storage } from "@app/firebase/config";
 import UserPost from "./UserPost";
 import CreatePostInfo from "./CreatePostInfo";
 import fetchPosts from "@hooks/fetchPosts";
+import Spinner from "./Spinner";
 
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {
@@ -24,8 +25,6 @@ const Tester = () => {
   const [newTitle, setNewTitle] = useState("Title");
   const [newCaption, setNewCaption] = useState("Caption");
  
-
-
   const [imageURL, setImageURL] = useState("");
   const [file, setFile] = useState("");
   const [perc, setPerc] = useState(null);
@@ -181,9 +180,7 @@ const Tester = () => {
       </div>
       <div className="md:3/5">
         {loading && (
-          <div>
-            <p>MMMM I'm Loading</p>
-          </div>
+          <Spinner/>
         )}
         {!loading && currentUser && (
           <>
