@@ -10,6 +10,10 @@ const Home = ({}) => {
 
   const { currentUser } = useAuthContext();
   const router = useRouter();
+
+  useEffect(() => {
+    console.log(currentUser)
+  }, []) 
   
   
   return (

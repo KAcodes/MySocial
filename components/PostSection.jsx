@@ -124,7 +124,7 @@ const Tester = () => {
       <h1 className= 'font-bold text-zinc-800 my-6 text-3xl text-center'>MySocial Homepage</h1>
       <div className="mb-7 bg-white rounded-lg p-4 md:w-4/5 sm:w-full mx-auto min-w-fit min-h-max">
         <div className="mx-auto max-w-fit p-2 my-3">
-          <h1 className="font-semibold text-zinc-800 my-5 text-2xl">Create New Post</h1>
+          <h1 className="font-semibold text-zinc-800 my-5 text-2xl">Create A New Post</h1>
         </div>
         <div className="md:flex justify-evenly mx-auto space-y-5 max-h-max">
           <div className="flex flex-col mx-3 p-6 items-center my-auto space-y-3">
@@ -146,13 +146,13 @@ const Tester = () => {
               />
               <input
                 type="text"
-                placeholder="Title"
+                placeholder="MyTitle"
                 className="border rounded shadow px-3 bg-white text-sm"
                 onChange={(e) => setNewTitle(e.target.value)}
               />
               <input
                 type="textarea"
-                placeholder="Caption"
+                placeholder="MyCaption"
                 className="max-w-full overflow-x-hidden border rounded shadow px-2 bg-white text-sm break-keep"
                 onChange={(e) => setNewCaption(e.target.value)}
               />
